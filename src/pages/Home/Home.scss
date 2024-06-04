@@ -3,5 +3,86 @@
 
 
 @include phone {
-    
-}
+    .main {
+      padding: 1rem 1.25rem;
+      &__header {
+        margin: 0;
+        font-size: 3rem;
+      }
+      &__form {
+        padding-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        &-input {
+          &-icon{
+              position: absolute;
+              margin-left: 1rem;
+              margin-top: 0.6rem;
+              width: 1.75rem;
+              height: 3rem;
+          }
+          &-field{
+              box-sizing: border-box;
+              height: 4.3rem;
+              width: 100%;
+              &::placeholder{
+                  padding-left: 3.5rem;
+                  font-size: 1.12rem;
+              }
+          }
+        }
+        &-search {
+          margin: 1rem 0;
+          height: 4.3rem;
+          border: 1px solid black;
+          border-radius: 0.31rem;
+          &-link {
+            text-decoration: none;
+            color: black;
+            text-align: center;
+            display: flex;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+          }
+          &-t {
+            margin: 0;
+            font-size: 1rem;
+          }
+        }
+      }
+      &__categories {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        &-b {
+          display: flex;
+          align-items: center;
+          margin: 0.4rem 0;
+          border: 1px solid black;
+          border-radius: 1.25rem;
+        }
+        &-icon {
+          margin: 0.2rem 0.5rem;
+          width: 1.5rem;
+          height: 1.5rem;
+          padding-top: 0.2rem;
+        }
+        &-name {
+          margin: 0;
+          color: black;
+          font-weight: 600;
+          padding: 0.7rem 1rem;
+          padding-left: 0;
+          font-size: 0.62rem;
+        }
+      }
+      &__map {
+          margin: 1.5rem 0;
+          border: 1px solid black;
+          height: 22.37rem;
+      }
+    }
+  }
+  
