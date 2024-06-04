@@ -1,7 +1,45 @@
 @use "../../styles/partials/breakpoints" as *;
 @use "../../styles/partials/colors" as *;
 
-
 @include phone {
-    
+  .footer {
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    &__left {
+      &-header {
+        font-size: 0.81rem;
+        margin: 0;
+        font-weight: 600;
+      }
+    }
+    &__text{
+        display: flex;
+        justify-content: space-between;
+        &-l{
+            margin-right: 4.5rem;
+        }
+    }
+
+    &__right {
+      &-link {
+        text-decoration: none;
+        color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+      }
+    }
+
+    &__t {
+      font-size: 0.5rem;
+      font-weight: 400;
+    }
+
+    &__name {
+      margin: 0;
+      font-size: 1.12rem;
+    }
+  }
 }
