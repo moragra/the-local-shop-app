@@ -1,0 +1,7 @@
+$min-phone: 320px;
+
+@mixin phone {
+  @media (min-width: $min-phone) {
+    @content;
+  }
+}
