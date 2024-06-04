@@ -1,7 +1,105 @@
 @use "../../styles/partials/breakpoints" as *;
 @use "../../styles/partials/colors" as *;
 
-
 @include phone {
-    
+  .header {
+    padding-top: 2rem;
+    &__container {
+      display: flex;
+      align-items: center;
+      padding: 0 1.25rem;
+      padding-bottom: 1rem;
+      justify-content: space-between;
+    }
+    &__left {
+      margin-right: 0.5rem;
+      &-link {
+        text-decoration: none;
+        color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        // justify-content: end;
+      }
+    }
+
+    &__right {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &__link {
+      text-decoration: none;
+      color: black;
+    }
+
+    &__name-1 {
+      margin: 0;
+      font-size: 1.12rem;
+    }
+
+    &__box {
+      // margin-right: 2rem;
+      display: flex;
+      border: 1px solid black;
+      border-radius: 5px;
+      align-items: center;
+      &-t {
+        padding: 0 1rem;
+        text-align: center;
+        margin: 0;
+        font-size: 0.68rem;
+      }
+      &-hr {
+        margin: 0;
+        height: 2.4rem;
+      }
+    }
+
+    &__menu {
+      height: auto;
+      width: auto;
+      padding-left: 2rem;
+      &-icon {
+        width: 2.1rem;
+        height: 2.5rem;
+        margin-top: 0.5rem;
+      }
+      &-drawer {
+        padding: 1rem;
+        &-bottom {
+          margin-top: 2rem;
+          display: flex;
+          flex-direction: column;
+          &-t {
+            padding: 1rem 0.5rem;
+            font-size: 1rem;
+            margin: 0;
+            font-weight: 600;
+          }
+          &-hr {
+            margin: 0;
+            margin-bottom: 1rem;
+          }
+          &-btn {
+            text-decoration: none;
+            color: black;
+            font-weight: 600;
+            margin: 0.8rem 0;
+            background-color: white;
+            border: 1px solid black;
+            padding: 0.6rem 0;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    &__hr {
+      border: 1px solid black;
+    }
+  }
 }
