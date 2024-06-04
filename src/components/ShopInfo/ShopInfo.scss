@@ -4,7 +4,7 @@
 
 @include phone {
     .main__shop {
-      border: 1px solid black;
+      border: 1px solid $color-one;
       border-radius: 0.33rem;
       &-top {
         display: flex;
