@@ -15,7 +15,7 @@
       margin-right: 0.5rem;
       &-link {
         text-decoration: none;
-        color: black;
+        color: $color-one;
         display: flex;
         flex-direction: column;
         align-items: end;
@@ -31,7 +31,7 @@
 
     &__link {
       text-decoration: none;
-      color: black;
+      color: $color-one;
     }
 
     &__name-1 {
@@ -42,7 +42,7 @@
     &__box {
       // margin-right: 2rem;
       display: flex;
-      border: 1px solid black;
+      border: 1px solid $color-one;
       border-radius: 5px;
       align-items: center;
       &-t {
@@ -84,11 +84,11 @@
           }
           &-btn {
             text-decoration: none;
-            color: black;
+            color: $color-one;
             font-weight: 600;
             margin: 0.8rem 0;
-            background-color: white;
-            border: 1px solid black;
+            background-color: $color-two;
+            border: 1px solid $color-one;
             padding: 0.6rem 0;
             border-radius: 5px;
             font-size: 0.75rem;
@@ -99,7 +99,7 @@
     }
 
     &__hr {
-      border: 1px solid black;
+      border: 1px solid $color-one;
     }
   }
 }

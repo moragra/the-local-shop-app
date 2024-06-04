@@ -34,11 +34,11 @@
         &-search {
           margin: 1rem 0;
           height: 4.3rem;
-          border: 1px solid black;
+          border: 1px solid $color-one;
           border-radius: 0.31rem;
           &-link {
             text-decoration: none;
-            color: black;
+            color: $color-one;
             text-align: center;
             display: flex;
             height: 100%;
@@ -60,7 +60,7 @@
           display: flex;
           align-items: center;
           margin: 0.4rem 0;
-          border: 1px solid black;
+          border: 1px solid $color-one;
           border-radius: 1.25rem;
         }
         &-icon {
@@ -71,7 +71,7 @@
         }
         &-name {
           margin: 0;
-          color: black;
+          color: $color-one;
           font-weight: 600;
           padding: 0.7rem 1rem;
           padding-left: 0;
@@ -80,7 +80,7 @@
       }
       &__map {
           margin: 1.5rem 0;
-          border: 1px solid black;
+          border: 1px solid $color-one;
           height: 22.37rem;
       }
     }
