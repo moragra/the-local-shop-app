@@ -3,5 +3,89 @@
 
 
 @include phone {
-    
-}
+    .main__shop {
+      border: 1px solid black;
+      border-radius: 0.33rem;
+      &-top {
+        display: flex;
+        align-items: center;
+      }
+      &-left {
+        width: 4.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &-icon {
+          margin-top:0.6rem ;
+        width: 2.56rem;
+        height: 2.56rem;
+      }
+      &-hr {
+        margin: 0;
+        height: 4.62rem;
+      }
+      &-right {
+        padding-left: 1.5rem;
+      }
+      &-name {
+        margin: 0;
+      }
+      &-hro {
+        margin: 0;
+      }
+      &-bottom {
+        padding: 1rem;
+      }
+      &-bio {
+        &-t {
+          margin: 0;
+          font-size: 0.93rem;
+        }
+        margin-bottom: 3.5rem;
+      }
+      &-info {
+        display: flex;
+        margin-bottom: 0.7rem;
+      }
+      &-founded {
+        margin-right: 7rem;
+      }
+      &-h {
+        font-size: 0.75rem;
+        font-weight: 400;
+        margin: 0;
+        padding-bottom: 0.5rem;
+      }
+      &-t {
+        margin: 0;
+        font-size: 0.81rem;
+        font-weight: 600;
+      }
+      &-socials {
+        display: flex;
+        justify-content: space-evenly;
+        height: 2rem;
+        &-ic {
+          display: flex;
+          align-items: center;
+        }
+        &-i {
+          width: 1rem;
+          height: 1rem;
+        }
+        &-hr {
+          margin: 0;
+        }
+      }
+      &-website{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &-t{
+              font-size: 0.75rem;
+          }   
+      }
+    }
+  }
+  
