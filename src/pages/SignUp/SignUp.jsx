@@ -30,7 +30,7 @@ export default function SignUp() {
     }
 
     try {
-      await axios.post('http://localhost:5050/signup', {
+      await axios.post( `${import.meta.env.VITE_LOCALHOST}signup`, {
         name,
         email,
         password

@@ -19,7 +19,7 @@ export default function Login({setToken}) {
        return
     }
 
-    const {data} = await axios.post('http://localhost:5050/login', {email, password})
+    const {data} = await axios.post(`${import.meta.env.VITE_LOCALHOST}login`, {email, password})
     const {token} = data
 
     localStorage.setItem('token', token)
