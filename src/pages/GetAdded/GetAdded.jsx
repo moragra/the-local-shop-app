@@ -1,11 +1,8 @@
 import "./GetAdded.scss";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 
 export default function GetAdded() {
   return (
     <>
-      <Header />
       <main className="added">
         <h2 className="added__header">Submit a Shop</h2>
         <form className="added__form" action="">
@@ -136,7 +133,6 @@ export default function GetAdded() {
           </div>
         </form>
       </main>
-      <Footer />
     </>
   );
 }

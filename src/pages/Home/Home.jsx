@@ -1,6 +1,4 @@
 import "./Home.scss";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import ShopInfo from "../../components/ShopInfo/ShopInfo";
 import bag from "../../assets/bag.svg";
 import search from "../../assets/search.svg";
@@ -10,7 +8,6 @@ import Map from "../../components/Map/Map";
 export default function Home() {
   return (
     <>
-      <Header />
       <main className="main">
         <h2 className="main__header">All Shops</h2>
         <form className="main__form" action="">
@@ -92,7 +89,6 @@ export default function Home() {
         </div>
         <ShopInfo />
       </main>
-      <Footer />
     </>
   );
 }

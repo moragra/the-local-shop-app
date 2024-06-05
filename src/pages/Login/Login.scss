@@ -38,16 +38,17 @@
           }
         }
         &-bottom {
-          &-link {
-            text-decoration: none;
-            color: $color-one;
+          &-red{
+            border-color: $color-three;
           }
           &-t {
             border: 1px solid $color-one;
             border-radius: 0.31rem;
             margin-top: 1rem;
             margin-bottom: 0.3rem;
-            padding: 1rem 0;
+            padding: 1rem;
+            width: 100%;
+            background-color: $color-two;
             text-align: center;
             font-weight: 600;
           }

@@ -18,6 +18,15 @@
           }
       }
       &__section{
+        &-signed{
+            font-size: 0.93rem;
+            font-weight: 400;
+        }
+        &-error{
+            font-size: 0.93rem;
+            font-weight: 400;
+            color: $color-three;
+        }
           &-h2{
               margin: 0;
               padding-bottom: 1rem;
@@ -43,16 +52,14 @@
               }
           }
           &-bottom{
-              &-link{
-                  text-decoration: none;
-                  color: $color-one;
-              }
               &-t{
+                background-color: $color-two;
                   border: 1px solid $color-one;
                   border-radius: 0.31rem;
                   margin-top: 1rem;
                   margin-bottom: 0.3rem;
-                  padding: 1rem 0;
+                  padding: 1rem;
+                  width: 100%;
                   text-align: center;
                   font-weight: 600;
               }

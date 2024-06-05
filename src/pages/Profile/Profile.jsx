@@ -1,6 +1,4 @@
 import "./Profile.scss";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import ig from "../../assets/instagram.svg";
 import fb from "../../assets/facebook.png";
 import x from "../../assets/twitter.svg";
@@ -10,7 +8,6 @@ import edit from '../../assets/edit.svg'
 export default function Profile() {
   return (
     <>
-      <Header />
       <main className="profile">
         <div className="profile__container">
           <div className="profile__top">
@@ -52,7 +49,6 @@ export default function Profile() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }
