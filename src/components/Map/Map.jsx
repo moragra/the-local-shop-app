@@ -3,8 +3,8 @@ import mapboxgl from 'mapbox-gl';
 import React, { useRef, useEffect } from 'react';
 
 export default function Map() { 
-  const token = import.meta.env.MAPBOX_ACCESS_TOKEN
-  mapboxgl.accessToken = token
+  // const token = import.meta.env.MAPBOX_ACCESS_TOKEN
+  mapboxgl.accessToken = 'pk.eyJ1IjoibW9yYWdyYSIsImEiOiJjbHgweXp3OWEwMHo5Mmxwazlna2pzeGQ3In0.XnKqyFAxwHt3jzgBW4OjfQ'
   const mapContainerRef = useRef(null);
   useEffect(() => {
     const map = new mapboxgl.Map({
