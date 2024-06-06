@@ -61,11 +61,27 @@ export default function Header({ token, setToken }) {
               {token ? (
                 <div className="header__menu-drawer-bottom">
                   <h2 className="header__menu-drawer-bottom-t">
-                    Explore Shops
+                    <Link className="header__menu-drawer-bottom-link" to={"/"}>
+                      Explore Shops
+                    </Link>
                   </h2>
                   <hr className="header__menu-drawer-bottom-hr" />
                   <h2 className="header__menu-drawer-bottom-t">
-                    Submit a brand
+                    <Link
+                      className="header__menu-drawer-bottom-link"
+                      to={"/get-added"}
+                    >
+                      Submit a shop
+                    </Link>
+                  </h2>
+                  <hr className="header__menu-drawer-bottom-hr" />
+                  <h2 className="header__menu-drawer-bottom-t">
+                    <Link
+                      className="header__menu-drawer-bottom-link"
+                      to={"/profile"}
+                    >
+                      Profile
+                    </Link>
                   </h2>
                   <hr className="header__menu-drawer-bottom-hr" />
                   <Link
@@ -82,11 +98,18 @@ export default function Header({ token, setToken }) {
               ) : (
                 <div className="header__menu-drawer-bottom">
                   <h2 className="header__menu-drawer-bottom-t">
-                    Explore Shops
+                    <Link className="header__menu-drawer-bottom-link" to={"/"}>
+                      Explore Shops
+                    </Link>
                   </h2>
                   <hr className="header__menu-drawer-bottom-hr" />
                   <h2 className="header__menu-drawer-bottom-t">
-                    Submit a brand
+                    <Link
+                      className="header__menu-drawer-bottom-link"
+                      to={"/signup"}
+                    >
+                      Submit a shop
+                    </Link>
                   </h2>
                   <hr className="header__menu-drawer-bottom-hr" />
                   <Link

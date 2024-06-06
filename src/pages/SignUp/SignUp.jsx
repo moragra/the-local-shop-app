@@ -35,10 +35,9 @@ export default function SignUp() {
         email,
         password
       })
-      console.log('in')
       setSigned(true)
     } catch (error) {
-      setError("Sorry there was an error, we can't complete your request at the moment")
+      setError("Sorry there was an error, we can't complete your request at the moment.")
     }
   }
 

@@ -4,8 +4,38 @@ import fb from "../../assets/facebook.png";
 import x from "../../assets/twitter.svg";
 import li from "../../assets/linkedin.png";
 import edit from '../../assets/edit.svg'
+import { useEffect, useState } from "react";
+import axios from 'axios'
 
-export default function Profile() {
+export default function Profile({token}) {
+  const [user, setUser] = useState(null)
+  const [business, setBusiness] = useState(null)
+
+  useEffect(()=>{
+    if(token){
+      getProfile()
+      getBusiness()
+    } else {
+      setUser(null)
+      setBusiness(null)
+    }
+  }, [token])
+
+  const getProfile = async () =>{
+    const {data} = await axios.get(`${import.meta.env.VITE_LOCALHOST}profile`, {
+      headers:{
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      mode: 'cors'
+    })
+    setUser(data)
+  }
+
+  const getBusiness = async () =>{
+    const {data} = await axios.get(`${import.meta.env.VITE_LOCALHOST}business/${user.id}`)
+  }
+
   return (
     <>
       <main className="profile">
