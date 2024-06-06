@@ -50,6 +50,10 @@
         &-hr {
           margin: 0;
         }
+        &-link{
+          text-decoration: none;
+          color: $color-one;
+        }
       }
       &__socials {
           display: flex;
