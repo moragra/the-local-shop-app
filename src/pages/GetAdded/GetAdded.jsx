@@ -1,36 +1,40 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import "./GetAdded.scss";
 import axios from "axios";
+import { AddressAutofill } from "@mapbox/search-js-react";
 
-export default function GetAdded({token}) {
-  const [user_id, setUser_id] = useState(null)
-  const [red, setRed] = useState("")
-  const [submitted, setSubmitted] = useState(false)
-  const [error, setError] = useState(null)
+export default function GetAdded({ token }) {
+  const [user_id, setUser_id] = useState(null);
+  const [red, setRed] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(null);
 
-  useEffect(()=>{
-    if(token){
-      getProfile()
+  useEffect(() => {
+    if (token) {
+      getProfile();
     } else {
-      setUser_id(null)
+      setUser_id(null);
     }
-  }, [token])
+  }, [token]);
 
-  const getProfile = async () =>{
-    const {data} = await axios.get(`${import.meta.env.VITE_LOCALHOST}profile`, {
-      headers:{
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-      mode: 'cors'
-    })
-    setUser_id(data.id)
-  }
+  const getProfile = async () => {
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_LOCALHOST}profile`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+      }
+    );
+    setUser_id(data.id);
+  };
 
   const submitHandler = async (e) => {
-    e.preventDefault()
-    setSubmitted(false)
-    setError(null)
+    e.preventDefault();
+    setSubmitted(false);
+    setError(null);
     const shop_name = e.target.shop_name.value;
     const category = e.target.category.value;
     const email = e.target.email.value;
@@ -62,26 +66,28 @@ export default function GetAdded({token}) {
       return;
     }
     try {
-      await axios.post(
-        `${import.meta.env.VITE_LOCALHOST}business`,
-        {
-          user_id,
-          shop_name,
-          category,
-          email,
-          phone,
-          address,
-          about,
-          website_url,
-          ig_url,
-          fb_url,
-          x_url,
-          li_url,
-          consent,
-        });
-      setSubmitted(true) 
+      await axios.post(`${import.meta.env.VITE_LOCALHOST}business`, {
+        user_id,
+        shop_name,
+        category,
+        email,
+        phone,
+        address,
+        about,
+        website_url,
+        ig_url,
+        fb_url,
+        x_url,
+        li_url,
+        consent,
+      });
+      setSubmitted(true);
+
+      // clean input fields after submitting
     } catch (error) {
-      setError("Sorry there was an error, we can't complete your request at the moment.")
+      setError(
+        "Sorry there was an error, we can't complete your request at the moment."
+      );
     }
   };
 
@@ -90,131 +96,156 @@ export default function GetAdded({token}) {
       <main className="added">
         <h2 className="added__header">Submit a Shop</h2>
         <form className="added__form" onSubmit={submitHandler}>
-          <label className="added__form-l">
-            Shop Name
-          </label>
+          <label className="added__form-l">Shop Name</label>
           <input
             type="text"
             id="shop-name"
             name="shop_name"
             className={`${red} added__form-i`}
-              onClick={() => {if (red === "added__form-red") {setRed("");}}}
+            onClick={() => {
+              if (red === "added__form-red") {
+                setRed("");
+              }
+            }}
           />
 
-          <label className="added__form-l">
-            Category
-          </label>
+          <label className="added__form-l">Category</label>
           <input
             className={`${red} added__form-i`}
-              onClick={() => {if (red === "added__form-red") {setRed("");}}}
+            onClick={() => {
+              if (red === "added__form-red") {
+                setRed("");
+              }
+            }}
             type="text"
             id="category"
             name="category"
           />
 
-          <label className="added__form-l">
-            Email
-          </label>
+          <label className="added__form-l">Email</label>
           <input
             className={`${red} added__form-i`}
-            onClick={() => {if (red === "added__form-red") {setRed("");}}}
+            onClick={() => {
+              if (red === "added__form-red") {
+                setRed("");
+              }
+            }}
             type="email"
             id="email"
             name="email"
           />
 
-          <label className="added__form-l">
-            Phone
-          </label>
-          <input 
-          className={`${red} added__form-i`}
-          onClick={() => {if (red === "added__form-red") {setRed("");}}}
-          type="tel" id="phone" name="phone" />
-
-          <label className="added__form-l">
-            Address
-          </label>
+          <label className="added__form-l">Phone</label>
           <input
             className={`${red} added__form-i`}
-              onClick={() => {if (red === "added__form-red") {setRed("");}}}
-            type="text"
-            id="address"
-            name="address"
+            onClick={() => {
+              if (red === "added__form-red") {
+                setRed("");
+              }
+            }}
+            type="tel"
+            id="phone"
+            name="phone"
           />
 
-          <label className="added__form-l">
-            About
-          </label>
+          <label className="added__form-l">Address</label>
+          <AddressAutofill accessToken='pk.eyJ1IjoibW9yYWdyYSIsImEiOiJjbHgweXp3OWEwMHo5Mmxwazlna2pzeGQ3In0.XnKqyFAxwHt3jzgBW4OjfQ'>
+            <input
+              className={`${red} added__form-i`}
+              onClick={() => {if (red === "added__form-red") {setRed("");}}}
+              type="text"
+              id="address"
+              name="address"
+              autoComplete="address"
+            />
+          </AddressAutofill>
+          <label className="added__form-l">About</label>
           <input
             className={`${red} added__form-i`}
-              onClick={() => {if (red === "added__form-red") {setRed("");}}}
+            onClick={() => {
+              if (red === "added__form-red") {
+                setRed("");
+              }
+            }}
             type="text"
             id="about"
             name="about"
           />
 
-          <label className="added__form-l">
-            Website URL
-          </label>
+          <label className="added__form-l">Website URL</label>
           <input
             className={`${red} added__form-i`}
-              onClick={() => {if (red === "added__form-red") {setRed("");}}}
+            onClick={() => {
+              if (red === "added__form-red") {
+                setRed("");
+              }
+            }}
             type="url"
             id="website-url"
             name="website_url"
           />
 
-          <label className="added__form-l">
-            Instagram URL
-          </label>
+          <label className="added__form-l">Instagram URL</label>
           <input
             className={`${red} added__form-i`}
-              onClick={() => {if (red === "added__form-red") {setRed("");}}}
+            onClick={() => {
+              if (red === "added__form-red") {
+                setRed("");
+              }
+            }}
             type="url"
             id="instagram-url"
             name="ig_url"
           />
 
-          <label className="added__form-l">
-            Facebook URL
-          </label>
+          <label className="added__form-l">Facebook URL</label>
           <input
             className={`${red} added__form-i`}
-            onClick={() => {if (red === "added__form-red") {setRed("");}}}
+            onClick={() => {
+              if (red === "added__form-red") {
+                setRed("");
+              }
+            }}
             type="url"
             id="facebook-url"
             name="fb_url"
           />
 
-          <label className="added__form-l">
-            Twitter URL
-          </label>
+          <label className="added__form-l">Twitter URL</label>
           <input
             className={`${red} added__form-i`}
-            onClick={() => {if (red === "added__form-red") {setRed("");}}}
+            onClick={() => {
+              if (red === "added__form-red") {
+                setRed("");
+              }
+            }}
             type="url"
             id="twitter-url"
             name="x_url"
           />
 
-          <label className="added__form-l">
-            LinkedIn URL
-          </label>
+          <label className="added__form-l">LinkedIn URL</label>
           <input
             className={`${red} added__form-i`}
-            onClick={() => {if (red === "added__form-red") {setRed("");}}}
+            onClick={() => {
+              if (red === "added__form-red") {
+                setRed("");
+              }
+            }}
             type="url"
             id="linkedin-url"
             name="li_url"
           />
 
-          <label className="added__form-l">
-            Consent
-          </label>
+          <label className="added__form-l">Consent</label>
           <div className="added__form-consent">
             <input
               className={`${red} added__form-i`}
-              onClick={() => {if (red === "added__form-red") {setRed("");}}}
+              onClick={() => {
+                if (red === "added__form-red") {
+                  setRed("");
+                }
+              }}
               type="checkbox"
               id="consent"
               name="consent"
@@ -230,7 +261,9 @@ export default function GetAdded({token}) {
             </p>
           </div>
           <button className="added__form-button">SUBMIT</button>
-          {submitted && <h3 className="added__form-submitted">Business submitted!</h3>}
+          {submitted && (
+            <h3 className="added__form-submitted">Business submitted!</h3>
+          )}
           {error && <h3 className="added__form-error">{error}</h3>}
         </form>
       </main>
