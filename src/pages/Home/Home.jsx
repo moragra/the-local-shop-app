@@ -1,17 +1,22 @@
 import "./Home.scss";
-import ShopInfo from "../../components/ShopInfo/ShopInfo";
 import bag from "../../assets/bag.svg";
 import search from "../../assets/search.svg";
 import { Link } from "react-router-dom";
 import Map from "../../components/Map/Map";
 import { useState } from "react";
+import axios from 'axios'
 
 export default function Home() {
   const [filter, setfilter] = useState(null)
-  const searchHadler = (e) => {
+  const [searchData, setSearchData] = useState(null)
+  const searchHadler = async (e) => {
     e.preventDefault();
-    const search = e.target.search.value;
+    const shop_name = e.target.search.value;
     
+    const {data} = await axios.get(`${import.meta.env.VITE_LOCALHOST}business/shop/${shop_name}`)
+
+    setSearchData(data)
+
   };
   return (
     <>
@@ -31,7 +36,7 @@ export default function Home() {
           <button className="main__form-search-btn">
             <h3 className="main__form-search-t">SEARCH</h3>
           </button>
-
+          </form>
           <div className="main__categories">
             <button className="main__categories-b" onClick={()=>{setfilter('groceries')}}>
               <img className="main__categories-icon" src={bag} alt="" />
@@ -63,11 +68,10 @@ export default function Home() {
               <h4 className="main__categories-name">HOTEL</h4>
             </button>
           </div>
-        </form>
+       
         <div className="main__map">
-          <Map filter={filter}/>
+          <Map filter={filter} searchData ={searchData} setSearchData={setSearchData}/>
         </div>
-        <ShopInfo />
       </main>
     </>
   );
