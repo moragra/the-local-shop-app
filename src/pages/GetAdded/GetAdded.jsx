@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import "./GetAdded.scss";
 import axios from "axios";
-import { AddressAutofill } from "@mapbox/search-js-react";
+import { Geocoder, AddressAutofill } from "@mapbox/search-js-react";
+import mapboxgl from "mapbox-gl";
 
 export default function GetAdded({ token }) {
   const [user_id, setUser_id] = useState(null);
   const [red, setRed] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
+  const [geoData, setGeoData] = useState("");
 
   useEffect(() => {
     if (token) {
@@ -33,13 +35,14 @@ export default function GetAdded({ token }) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
     setSubmitted(false);
     setError(null);
     const shop_name = e.target.shop_name.value;
     const category = e.target.category.value;
     const email = e.target.email.value;
     const phone = e.target.phone.value;
-    const address = e.target.address.value;
+    const address = geoData;
     const about = e.target.about.value;
     const website_url = e.target.website_url.value;
     const ig_url = e.target.ig_url.value;
@@ -47,6 +50,8 @@ export default function GetAdded({ token }) {
     const x_url = e.target.x_url.value;
     const li_url = e.target.li_url.value;
     const consent = e.target.consent.value;
+
+    console.log(user_id)
 
     if (
       !shop_name ||
@@ -82,7 +87,10 @@ export default function GetAdded({ token }) {
         consent,
       });
       setSubmitted(true);
-
+      // await axios.post(`${import.meta.env.VITE_LOCALHOST}geo`, {
+      //   user_id,
+      //   geoData
+      // })
       // clean input fields after submitting
     } catch (error) {
       setError(
@@ -110,17 +118,27 @@ export default function GetAdded({ token }) {
           />
 
           <label className="added__form-l">Category</label>
-          <input
-            className={`${red} added__form-i`}
+          <select
+            name="category"
+            id="category"
+            className={`${red} added__form-i added__form-dd`}
             onClick={() => {
               if (red === "added__form-red") {
                 setRed("");
               }
             }}
-            type="text"
-            id="category"
-            name="category"
-          />
+            placeholder="Select a category"
+          >
+            <option className="added__form-gray" value="deafult">
+              Select a category
+            </option>
+            <option value="groceries">Groceries</option>
+            <option value="fashion">Fashion</option>
+            <option value="restaurants">Restaurant</option>
+            <option value="recreational">Recreational</option>
+            <option value="convenience">Convenience</option>
+            <option value="hotel">Hotel</option>
+          </select>
 
           <label className="added__form-l">Email</label>
           <input
@@ -149,16 +167,15 @@ export default function GetAdded({ token }) {
           />
 
           <label className="added__form-l">Address</label>
-          <AddressAutofill accessToken='pk.eyJ1IjoibW9yYWdyYSIsImEiOiJjbHgweXp3OWEwMHo5Mmxwazlna2pzeGQ3In0.XnKqyFAxwHt3jzgBW4OjfQ'>
-            <input
-              className={`${red} added__form-i`}
-              onClick={() => {if (red === "added__form-red") {setRed("");}}}
-              type="text"
-              id="address"
-              name="address"
-              autoComplete="address"
-            />
-          </AddressAutofill>
+          <Geocoder
+          className="added__form-gc"
+            accessToken="pk.eyJ1IjoibW9yYWdyYSIsImEiOiJjbHgweXp3OWEwMHo5Mmxwazlna2pzeGQ3In0.XnKqyFAxwHt3jzgBW4OjfQ"
+            options={{ language: "en" }}
+            value={""}
+            onRetrieve={(d) => {
+              setGeoData(d);
+            }}
+          />
           <label className="added__form-l">About</label>
           <input
             className={`${red} added__form-i`}

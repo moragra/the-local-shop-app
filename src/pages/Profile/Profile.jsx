@@ -41,7 +41,7 @@ export default function Profile({ token }) {
 
   return (
     <>
-      {user && business ? (
+      {user ? (
         <main className="profile">
           <div className="profile__container">
             <div className="profile__top">
@@ -57,40 +57,48 @@ export default function Profile({ token }) {
                 <img className="profile__right-i" src={edit} alt="" />
               </div>
             </div>
-            <hr className="profile__hr" />
-            <div className="profile__mid">
-              <h2 className="profile__mid-t">{business.shop_name.toUpperCase()}</h2>
-              <hr className="profile__mid-hr" />
-              <Link to={business.website_url} className="profile__mid-link">
-                <h2 className="profile__mid-t">WEBSITE</h2>
-              </Link>
-            </div>
-            <hr className="profile__hr" />
-            <div className="profile__socials">
-              <div className="profile__socials-ic">
-                <Link to={business.ig_url}>
-                  <img className="profile__socials-i" src={ig} alt="" />
-                </Link>
+            {business ? (
+              <div>
+                <hr className="profile__hr" />
+                <div className="profile__mid">
+                  <h2 className="profile__mid-t">
+                    {business.shop_name.toUpperCase()}
+                  </h2>
+                  <hr className="profile__mid-hr" />
+                  <Link to={business.website_url} className="profile__mid-link">
+                    <h2 className="profile__mid-t">WEBSITE</h2>
+                  </Link>
+                </div>
+                <hr className="profile__hr" />
+                <div className="profile__socials">
+                  <div className="profile__socials-ic">
+                    <Link to={business.ig_url}>
+                      <img className="profile__socials-i" src={ig} alt="" />
+                    </Link>
+                  </div>
+                  <hr className="profile__socials-hr" />
+                  <div className="profile__socials-ic">
+                    <Link to={business.fb_url}>
+                      <img className="profile__socials-i" src={fb} alt="" />
+                    </Link>
+                  </div>
+                  <hr className="profile__socials-hr" />
+                  <div className="profile__socials-ic">
+                    <Link to={business.x_url}>
+                      <img className="profile__socials-i" src={x} alt="" />
+                    </Link>
+                  </div>
+                  <hr className="profile__socials-hr" />
+                  <div className="profile__socials-ic">
+                    <Link to={business.li_url}>
+                      <img className="profile__socials-i" src={li} alt="" />
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <hr className="profile__socials-hr" />
-              <div className="profile__socials-ic">
-                <Link to={business.fb_url}>
-                  <img className="profile__socials-i" src={fb} alt="" />
-                </Link>
-              </div>
-              <hr className="profile__socials-hr" />
-              <div className="profile__socials-ic">
-                <Link to={business.x_url}>
-                  <img className="profile__socials-i" src={x} alt="" />
-                </Link>
-              </div>
-              <hr className="profile__socials-hr" />
-              <div className="profile__socials-ic">
-                <Link to={business.li_url}>
-                  <img className="profile__socials-i" src={li} alt="" />
-                </Link>
-              </div>
-            </div>
+            ) : (
+              ""
+            )}
           </div>
         </main>
       ) : (
