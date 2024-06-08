@@ -5,7 +5,7 @@
 @include phone {
     .signup{
       padding: 1rem 1.25rem;
-      margin-bottom: 9rem;
+      margin-bottom: 18.2rem;
       &__back{
           &-link{
               text-decoration: none;
@@ -33,7 +33,7 @@
           }
           &-h3{
               font-size: 0.93rem;
-              font-weight:400;
+              font-weight: 500;
           }
           &-top{
               border: 1px solid $color-one;

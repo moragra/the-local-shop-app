@@ -4,9 +4,12 @@
 
 @include phone {
     .main__shop {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
       border: 1px solid $color-one;
       border-radius: 0.33rem;
-      margin-bottom: 2rem;
+      margin-bottom: 5rem;
       &-top {
         display: flex;
         align-items: center;
@@ -31,6 +34,7 @@
       }
       &-name {
         margin: 0;
+        font-weight: 700;
       }
       &-hro {
         margin: 0;
@@ -41,20 +45,23 @@
       &-bio {
         &-t {
           margin: 0;
-          font-size: 0.93rem;
+          font-size: 0.8rem;
+          font-weight: 600;
+          
         }
         margin-bottom: 3.5rem;
       }
       &-info {
         display: flex;
         margin-bottom: 0.7rem;
+        width: 100%;
       }
       &-founded {
-        margin-right: 7rem;
+        width: 70%;
       }
       &-h {
         font-size: 0.75rem;
-        font-weight: 400;
+        font-weight: 500;
         margin: 0;
         padding-bottom: 0.5rem;
       }

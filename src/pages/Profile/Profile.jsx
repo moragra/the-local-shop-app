@@ -46,9 +46,9 @@ export default function Profile({ token }) {
           <div className="profile__container">
             <div className="profile__top">
               <div className="profile__left">
-                <div className="profile__img">
+                {/* <div className="profile__img">
                   <img className="profile__img-i" src="" alt="" />
-                </div>
+                </div> */}
                 <div className="profile__name">
                   <h2 className="profile__name-t">{user.name.toUpperCase()}</h2>
                 </div>

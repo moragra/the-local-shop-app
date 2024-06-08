@@ -7,14 +7,12 @@ import { useState } from "react";
 import axios from 'axios'
 
 export default function Home() {
-  const [filter, setfilter] = useState(null)
+  const [filter, setFilter] = useState(null)
   const [searchData, setSearchData] = useState(null)
   const searchHadler = async (e) => {
     e.preventDefault();
     const shop_name = e.target.search.value;
-    
     const {data} = await axios.get(`${import.meta.env.VITE_LOCALHOST}business/shop/${shop_name}`)
-
     setSearchData(data)
 
   };
@@ -38,39 +36,20 @@ export default function Home() {
           </button>
           </form>
           <div className="main__categories">
-            <button className="main__categories-b" onClick={()=>{setfilter('groceries')}}>
+          {["groceries", "fashion", "restaurants", "recreational", "convenience", "hotel"].map((category) => (
+            <button
+              key={category}
+              className="main__categories-b"
+              onClick={() => setFilter(category)}
+            >
               <img className="main__categories-icon" src={bag} alt="" />
-              <h4 className="main__categories-name">GROCERIES</h4>
+              <h4 className="main__categories-name">{category.toUpperCase()}</h4>
             </button>
-
-            <button className="main__categories-b" onClick={()=>{setfilter('fashion')}}>
-              <img className="main__categories-icon" src={bag} alt="" />
-              <h4 className="main__categories-name">FASHION</h4>
-            </button>
-
-            <button className="main__categories-b" onClick={()=>{setfilter('restaurants')}}>
-              <img className="main__categories-icon" src={bag} alt="" />
-              <h4 className="main__categories-name">RESTAURANTS</h4>
-            </button>
-
-            <button className="main__categories-b" onClick={()=>{setfilter('recreational')}}>
-              <img className="main__categories-icon" src={bag} alt="" />
-              <h4 className="main__categories-name">RECREATIONAL</h4>
-            </button>
-
-            <button className="main__categories-b" onClick={()=>{setfilter('convenience')}}>
-              <img className="main__categories-icon" src={bag} alt="" />
-              <h4 className="main__categories-name">CONVENIENCE</h4>
-            </button>
-
-            <button className="main__categories-b" onClick={()=>{setfilter('hotel')}}>
-              <img className="main__categories-icon" src={bag} alt="" />
-              <h4 className="main__categories-name">HOTEL</h4>
-            </button>
+          ))}
           </div>
        
         <div className="main__map">
-          <Map filter={filter} searchData ={searchData} setSearchData={setSearchData}/>
+          <Map filter={filter} setFilter={setFilter} searchData ={searchData} setSearchData={setSearchData}/>
         </div>
       </main>
     </>

@@ -1,11 +1,11 @@
 @use "../../styles/partials/breakpoints" as *;
 @use "../../styles/partials/colors" as *;
-
+@use '../../styles//partials/fonts' as *;
 
 @include phone {
     .main {
       padding: 1rem 1.25rem;
-      margin-bottom: 20rem;
+      margin-bottom: 0;
       &__header {
         margin: 0;
         font-size: 3rem;
@@ -54,6 +54,7 @@
           &-t {
             margin: 0;
             font-size: 1rem;
+            font-weight: 600;
           }
         }
       }
@@ -85,6 +86,7 @@
           padding: 0.7rem 0rem;
           padding-left: 0;
           font-size: 0.62rem;
+          font-weight: 700;
         }
       }
       &__map {

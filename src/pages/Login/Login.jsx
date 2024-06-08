@@ -55,14 +55,14 @@ export default function Login({setToken}) {
             </div>
             <div className="login__section-bottom">
               <button className="login__section-bottom-t">LOG IN</button>
-              <div className="login__section-bottom-orc">
+              {/* <div className="login__section-bottom-orc">
                 <hr className="login__section-bottom-hr" />
                 <p className="login__section-bottom-p"> or </p>
                 <hr className="login__section-bottom-hr" />
               </div>
               <button className="login__section-bottom-t">
                 LOG IN WITH GOOGLE
-              </button>
+              </button> */}
             </div>
           </form>
         </section>

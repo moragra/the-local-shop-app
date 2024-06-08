@@ -1,6 +1,9 @@
 @use "../../styles/partials/breakpoints" as *;
 @use "../../styles/partials/colors" as *;
-
+body{
+  font-family: Inter;
+  font-weight: 400;
+}
 @include phone {
   .header {
     padding-top: 2rem;
@@ -19,7 +22,7 @@
         display: flex;
         flex-direction: column;
         align-items: end;
-        // justify-content: end;
+        
       }
     }
 
@@ -37,10 +40,10 @@
     &__name-1 {
       margin: 0;
       font-size: 1.12rem;
+      font-weight: 700;
     }
 
     &__box {
-      // margin-right: 2rem;
       display: flex;
       border: 1px solid $color-one;
       border-radius: 5px;
@@ -50,6 +53,7 @@
         text-align: center;
         margin: 0;
         font-size: 0.68rem;
+        font-weight: 600
       }
       &-hr {
         margin: 0;
@@ -60,6 +64,7 @@
         text-align: center;
         margin: 0;
         font-size: 0.68rem;
+        font-weight: 600
       }
     }
 
@@ -74,6 +79,7 @@
       }
       &-drawer {
         padding: 1rem;
+        
         &-bottom {
           margin-top: 2rem;
           display: flex;
@@ -97,7 +103,7 @@
             color: $color-one;
             font-weight: 600;
             margin: 0.8rem 0;
-            background-color: $color-two;
+            
             border: 1px solid $color-one;
             padding: 0.6rem 0;
             border-radius: 5px;

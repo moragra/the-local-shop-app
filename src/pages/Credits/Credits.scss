@@ -1,0 +1,9 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/colors" as *;
+
+
+@include phone {
+    .credits{
+        padding: 1rem 1.25rem;
+    }     
+}

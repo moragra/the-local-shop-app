@@ -12,7 +12,10 @@
     "serve-heroku": "vite --host 0.0.0.0 --port $PORT preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@mapbox/search-js-react": "^1.0.0-beta.21",
+    "@mui/material": "^5.15.19",
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
     "mapbox-gl": "^3.4.0",

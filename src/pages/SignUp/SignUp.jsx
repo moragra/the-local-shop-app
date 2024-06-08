@@ -95,14 +95,14 @@ export default function SignUp() {
               }} className="signup__section-bottom-t">
                 NEXT
                 </button>
-              <div className="signup__section-bottom-orc">
+              {/* <div className="signup__section-bottom-orc">
                 <hr className="signup__section-bottom-hr" />
                 <p className="signup__section-bottom-p"> or </p>
                 <hr className="signup__section-bottom-hr" />
               </div>
               <button className="signup__section-bottom-t">
                 SIGN UP WITH GOOGLE
-              </button>
+              </button> */}
             </div>
           </form>
         </section>

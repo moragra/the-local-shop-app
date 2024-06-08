@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Footer.scss";
 
-export default function Footer() {
+export default function Footer({token, setToken}) {
   return (
     <footer className="footer">
       <div className="footer__left">
@@ -11,9 +11,11 @@ export default function Footer() {
             <Link className="footer__text-ll" to={'/signup'}>
               <h4 className="footer__t">CREATE AN ACCOUNT</h4>
             </Link>
-            <Link className="footer__text-ll" to={'/get-added'}>
+            {token? (<Link className="footer__text-ll" to={'/get-added'}>
               <h4 className="footer__t">SUBMIT A SHOP</h4>
-            </Link>
+            </Link>) : (<Link className="footer__text-ll" to={'/signup'}>
+              <h4 className="footer__t">SUBMIT A SHOP</h4>
+            </Link>)}
           </div>
           <div className="footer__text-r">
             <Link className="footer__text-ll" to={"/about"}>
