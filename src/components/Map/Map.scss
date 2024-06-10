@@ -3,15 +3,6 @@
 
 
 @include phone {
-    .map-container {
-        display: flex;
-        height: 100%;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin-bottom: 1rem;
-      }
       .marker {
         background-image: url('../../assets/pin.png');
         background-size: cover;
@@ -19,5 +10,30 @@
         height: 40px;
         border-radius: 50%;
         cursor: pointer;
-      }      
+      }    
+      .map-container-wrapper {
+        background-color: $color-two;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+      }
+      
+      .map-container {
+        width: 100%;
+        height: 22.37rem;
+      }
+      
+      .shop-info-container {
+        background-color: $color-two;
+        margin-top: 1rem;
+        width: 100%;
+        box-sizing: border-box;
+        height: 21rem;
+        z-index: 2;
+      } 
+      .content{
+        display: flex;
+        flex-direction: column;
+      }
 }

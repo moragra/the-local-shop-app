@@ -15,10 +15,10 @@ import Footer from "./components/Footer/Footer";
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'))
   return (
-    <div className="app">
       <BrowserRouter>
+      <div className="app__container">
       <Header className="header" token={token} setToken={setToken}/>
-      <div >
+      <div className="content__wrap">
       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignUp />}/>
@@ -30,9 +30,9 @@ function App() {
         </Routes>
       </div>
         <Footer className="footer" token={token} setToken={setToken}/>
+      </div>
       </BrowserRouter>
-    </div>
-  );
+    );
 }
 
 export default App;

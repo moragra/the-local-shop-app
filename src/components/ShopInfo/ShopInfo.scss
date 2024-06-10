@@ -6,10 +6,9 @@
     .main__shop {
       display: flex;
       flex-direction: column;
-      margin-top: 1rem;
       border: 1px solid $color-one;
       border-radius: 0.33rem;
-      margin-bottom: 5rem;
+      background-color: $color-two;
       &-top {
         display: flex;
         align-items: center;

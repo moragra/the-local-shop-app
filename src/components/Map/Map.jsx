@@ -7,11 +7,12 @@ import ShopInfo from "../../components/ShopInfo/ShopInfo";
 export default function Map({ filter, setFilter, searchData, setSearchData }) {
   const [shopInfo, setShopInfo] = useState(null);
   const mapContainerRef = useRef(null);
-  mapboxgl.accessToken = "pk.eyJ1IjoibW9yYWdyYSIsImEiOiJjbHgweXp3OWEwMHo5Mmxwazlna2pzeGQ3In0.XnKqyFAxwHt3jzgBW4OjfQ";
-  
+  mapboxgl.accessToken =
+    "pk.eyJ1IjoibW9yYWdyYSIsImEiOiJjbHgweXp3OWEwMHo5Mmxwazlna2pzeGQ3In0.XnKqyFAxwHt3jzgBW4OjfQ";
+
   useEffect(() => {
-    setSearchData(null)
-    setShopInfo(null)
+    setSearchData(null);
+    setShopInfo(null);
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: "mapbox://styles/moragra/clx6dbgp901tw01q14hxudleg",
@@ -20,7 +21,7 @@ export default function Map({ filter, setFilter, searchData, setSearchData }) {
 
     map.addControl(new mapboxgl.NavigationControl(), "bottom-right");
 
-    // sets position of the map based on your location 
+    // sets position of the map based on your location
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -30,7 +31,7 @@ export default function Map({ filter, setFilter, searchData, setSearchData }) {
         },
         (error) => {
           map.setCenter([-84.2, 10.0]);
-          map.setZoom(6)
+          map.setZoom(6);
         }
       );
     } else {
@@ -39,7 +40,7 @@ export default function Map({ filter, setFilter, searchData, setSearchData }) {
 
     // creates the feature collection for each business in data
 
-    const createFeatureCollection = (data) =>{
+    const createFeatureCollection = (data) => {
       return {
         type: "FeatureCollection",
         features: data.map((bu) => {
@@ -63,11 +64,11 @@ export default function Map({ filter, setFilter, searchData, setSearchData }) {
           };
         }),
       };
-    }
+    };
 
     // Adds business data to layer and create the markers
 
-    const businessData = (featureCollection) =>{
+    const businessData = (featureCollection) => {
       map.addSource("places", {
         type: "geojson",
         data: featureCollection,
@@ -85,13 +86,10 @@ export default function Map({ filter, setFilter, searchData, setSearchData }) {
 
       featureCollection.features.forEach((feature) => {
         const { geometry } = feature;
-        const el = document.createElement('div')
-        el.className = 'marker'
-        new mapboxgl.Marker(el)
-          .setLngLat(geometry.coordinates)
-          .addTo(map);
+        const el = document.createElement("div");
+        el.className = "marker";
+        new mapboxgl.Marker(el).setLngLat(geometry.coordinates).addTo(map);
       });
-        
 
       map.on("click", "places-layer", (e) => {
         const { shop_name, description, address, phone, ig, fb, x, li, wb } =
@@ -107,22 +105,23 @@ export default function Map({ filter, setFilter, searchData, setSearchData }) {
           li,
           wb,
         });
-        setSearchData(null)
+        setSearchData(null);
       });
-    }
+    };
 
     // get the business data from API and it renders the functions to display in map
 
     const renderBusiness = async () => {
       // try {
-        const { data } = await axios.get(
-          `${import.meta.env.VITE_LOCALHOST}business`
-        );
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_LOCALHOST}business`
+      );
 
-        const filterData = filter ? data.filter((d) => d.category === filter) : data
-        const featureCollection = createFeatureCollection(filterData)
-        businessData(featureCollection)
-
+      const filterData = filter
+        ? data.filter((d) => d.category === filter)
+        : data;
+      const featureCollection = createFeatureCollection(filterData);
+      businessData(featureCollection);
     };
 
     renderBusiness();
@@ -131,11 +130,19 @@ export default function Map({ filter, setFilter, searchData, setSearchData }) {
   }, [filter]);
 
   return (
-    <>
-      <div className="map-container" ref={mapContainerRef} />
-      {(shopInfo || searchData) && <ShopInfo shopInfo={shopInfo} searchData={searchData} setShopInfo={setShopInfo} />}
-    </>
+    <div className="map-container-wrapper">
+      <div className="content">
+        <div className="map-container" ref={mapContainerRef}></div>
+        {(shopInfo || searchData) && (
+          <div className="shop-info-container">
+            <ShopInfo
+              searchData={searchData}
+              setShopInfo={setShopInfo}
+              shopInfo={shopInfo}
+            />
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
-
-
