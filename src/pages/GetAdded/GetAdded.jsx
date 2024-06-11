@@ -66,11 +66,6 @@ export default function GetAdded({ token }) {
       !phone ||
       !address ||
       !about ||
-      !website_url ||
-      !ig_url ||
-      !fb_url ||
-      !x_url ||
-      !li_url ||
       !category
     ) {
       setRed("added__form-red");
