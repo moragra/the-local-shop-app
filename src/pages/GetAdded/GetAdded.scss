@@ -57,12 +57,15 @@
         color: $color-one;
         font-weight: 600;
         margin-top: 2rem;
-        background-color: $color-two;
         border: 1px solid $color-one;
         padding: 0.6rem 0;
         border-radius: 5px;
         font-size: 0.75rem;
         text-align: center;
+        background-color: rgba(229, 229, 229, 0.435);
+            &:hover{
+              background-color: #026eea;
+            }
       }
       
       &-submitted {

@@ -34,6 +34,7 @@
       &-name {
         margin: 0;
         font-weight: 700;
+        color: $color-four;
       }
       &-hro {
         margin: 0;
@@ -76,6 +77,13 @@
         &-ic {
           display: flex;
           align-items: center;
+          justify-content: center;
+          width: 100%;
+          background-color: rgba(229, 229, 229, 0.435);
+          margin: 0;
+          // &:hover{
+          //   background-color: #026eea;
+          // }
         }
         &-i {
           width: 1rem;
@@ -86,9 +94,13 @@
         }
       }
       &-website{
+        background-color: rgba(229, 229, 229, 0.435);
           display: flex;
           justify-content: center;
           align-items: center;
+          &:hover{
+            background-color: #026eea;
+          }
           &-t{
               font-size: 0.75rem;
           } 

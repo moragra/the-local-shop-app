@@ -19,14 +19,14 @@ export default function Home() {
   return (
     <>
       <main className="main">
-        <h2 className="main__header">All Shops</h2>
+        <h2 className="main__header">EXPLORE ALL SHOPS</h2>
         <form className="main__form" action="" onSubmit={searchHadler}>
           <div className="main__form-input">
             <img className="main__form-input-icon" src={search} alt="" />
             <input
               className="main__form-input-field"
               type="text"
-              placeholder="Search Local Owned Shops"
+              placeholder="Search"
               name="search"
             />
           </div>

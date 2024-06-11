@@ -36,13 +36,17 @@ export default function Header({ token, setToken }) {
             </Link>
           ) : (
             <div className="header__box">
-              <Link className="header__link" to={"/login"}>
-                <h2 className="header__box-t">LOG IN</h2>
-              </Link>
+              <div className="header__box-b-l">
+                <Link className="header__link" to={"/login"}>
+                  <h2 className="header__box-t">LOG IN</h2>
+                </Link>
+              </div>
               <hr className="header__box-hr" />
-              <Link className="header__link" to={"/signup"}>
-                <h2 className="header__box-t">SIGN UP</h2>
-              </Link>
+              <div className="header__box-b-r">
+                <Link className="header__link" to={"/signup"}>
+                  <h2 className="header__box-t">SIGN UP</h2>
+                </Link>
+              </div>
             </div>
           )}
           <div className="header__menu">

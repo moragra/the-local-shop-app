@@ -4,7 +4,6 @@
 @include phone {
     .login {
       padding: 1rem 1.25rem;
-      margin-bottom: 26rem;
       &__back {
         &-link {
           text-decoration: none;
@@ -48,26 +47,11 @@
             margin-bottom: 0.3rem;
             padding: 1rem;
             width: 100%;
-            background-color: $color-two;
             text-align: center;
             font-weight: 600;
-          }
-          &-orc {
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-          }
-          &-hr {
-            margin: 0;
-            border: 1px solid $color-one;
-            height: 5.12rem;
-            position: absolute;
-            transform: rotate(90deg);
-            &:first-child {
-              right: 8.5rem;
-            }
-            &:last-child {
-              left: 8.5rem;
+            background-color: rgba(229, 229, 229, 0.435);
+            &:hover{
+              background-color: #026eea;
             }
           }
           &-p {
