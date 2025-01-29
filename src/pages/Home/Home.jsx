@@ -4,7 +4,7 @@ import search from "../../assets/search.svg";
 import { Link } from "react-router-dom";
 import Map from "../../components/Map/Map";
 import { useState } from "react";
-import axios from 'axios'
+import { api } from '../../utils/axios'
 
 export default function Home() {
   const [filter, setFilter] = useState(null)
@@ -12,7 +12,7 @@ export default function Home() {
   const searchHadler = async (e) => {
     e.preventDefault();
     const shop_name = e.target.search.value;
-    const {data} = await axios.get(`${import.meta.env.VITE_LOCALHOST}business/shop/${shop_name}`)
+    const {data} = await api.get(`/business/shop/${shop_name}`)
     setSearchData(data)
 
   };

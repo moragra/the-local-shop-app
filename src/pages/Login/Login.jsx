@@ -1,5 +1,5 @@
 import "./Login.scss";
-import axios from "axios";
+import { api } from '../../utils/axios'
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +18,10 @@ export default function Login({setToken}) {
        return
     }
 
-    const {data} = await axios.post(`${import.meta.env.VITE_LOCALHOST}login`, {email, password})
+    const {data} = await api.post('/login', {
+      email, 
+      password
+    })
     const {token} = data
 
     localStorage.setItem('token', token)

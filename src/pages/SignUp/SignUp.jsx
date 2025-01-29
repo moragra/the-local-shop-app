@@ -1,6 +1,6 @@
 import "./SignUp.scss";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { api } from '../../utils/axios'
 import { useState } from "react";
 
 export default function SignUp() {
@@ -30,7 +30,7 @@ export default function SignUp() {
     }
 
     try {
-      await axios.post( `${import.meta.env.VITE_LOCALHOST}signup`, {
+      const response = await api.post('/signup', {
         name,
         email,
         password

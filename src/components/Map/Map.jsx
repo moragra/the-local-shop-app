@@ -1,7 +1,7 @@
 import "./Map.scss";
 import mapboxgl from "mapbox-gl";
 import React, { useRef, useEffect, useState } from "react";
-import axios from "axios";
+import { api } from '../../utils/axios'
 import ShopInfo from "../../components/ShopInfo/ShopInfo";
 
 export default function Map({ filter, setFilter, searchData, setSearchData }) {
@@ -113,9 +113,7 @@ export default function Map({ filter, setFilter, searchData, setSearchData }) {
 
     const renderBusiness = async () => {
       // try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_LOCALHOST}business`
-      );
+      const { data } = await api.get('/business')
 
       const filterData = filter
         ? data.filter((d) => d.category === filter)

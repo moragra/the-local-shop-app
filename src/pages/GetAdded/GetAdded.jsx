@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./GetAdded.scss";
-import axios from "axios";
+import { api } from '../../utils/axios'
 import { Geocoder} from "@mapbox/search-js-react";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -24,16 +24,13 @@ export default function GetAdded({ token }) {
   }, [token]);
 
   const getProfile = async () => {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_LOCALHOST}profile`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        mode: "cors",
-      }
-    );
+    const { data } = await api.get('/profile', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+    });
     setUser_id(data.id);
   };
 
@@ -43,7 +40,7 @@ export default function GetAdded({ token }) {
   const submitHandler = async (e) => {
     e.preventDefault();
     setSubmitted(false);
-    console.log('hi')
+
     setError(null);
 
     const shop_name = e.target.shop_name.value;
@@ -91,8 +88,26 @@ export default function GetAdded({ token }) {
       return setError("Sorry there is an error with your email.")
     } 
     
+    console.log(
+      {
+        user_id,
+        shop_name,
+        category,
+        email,
+        phone,
+        address,
+        about,
+        website_url,
+        ig_url,
+        fb_url,
+        x_url,
+        li_url,
+        consent,
+      }
+    )
+
     try {
-      await axios.post(`${import.meta.env.VITE_LOCALHOST}business`, {
+      await api.post('/business', {
         user_id,
         shop_name,
         category,

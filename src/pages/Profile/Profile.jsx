@@ -5,7 +5,7 @@ import x from "../../assets/twitter.svg";
 import li from "../../assets/linkedin.png";
 import edit from "../../assets/edit.svg";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { api } from '../../utils/axios'
 import { Link } from "react-router-dom";
 
 export default function Profile({ token }) {
@@ -22,7 +22,7 @@ export default function Profile({ token }) {
   }, [token]);
 
   const getData = async () => {
-    const resp1 = await axios.get(`${import.meta.env.VITE_LOCALHOST}profile`, {
+    const resp1 = await api.get('/profile', {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -32,9 +32,7 @@ export default function Profile({ token }) {
     const profile = resp1.data;
     setUser(profile);
 
-    const resp2 = await axios.get(
-      `${import.meta.env.VITE_LOCALHOST}business/${profile.id}`
-    );
+    const resp2 = await api.get(`/business/${profile.id}`);
     const business = resp2.data;
     setBusiness(business);
   };
