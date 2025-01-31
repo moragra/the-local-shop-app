@@ -5,8 +5,9 @@ import { Geocoder} from "@mapbox/search-js-react";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { useNavigate } from 'react-router-dom';
 
-export default function GetAdded({ token }) {
+export default function GetAdded({ token, setBusinesses }) {
   const [user_id, setUser_id] = useState(null);
   const [red, setRed] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -14,29 +15,30 @@ export default function GetAdded({ token }) {
   const [geoData, setGeoData] = useState("");
   const [values, setValues] = useState({});
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (token) {
-      console.log('Token exists:', token)
+      // console.log('Token exists:', token)
       getProfile();
     } else {
-      console.log('No token found')
+      // console.log('No token found')
       setUser_id(null);
     }
   }, [token]);
 
   const getProfile = async () => {
     try {
-      console.log('Making profile request with token:', token)
+      // console.log('Making profile request with token:', token)
       const { data } = await api.get('/profile', {
         headers: {
           Authorization: `Bearer ${token}`
         }
       })
-      console.log('Profile data received:', data)
+      // console.log('Profile data received:', data)
       setUser_id(data.id)
     } catch (error) {
-      console.error('Error fetching profile:', error)
+      // console.error('Error fetching profile:', error)
       setError('Error fetching user profile')
     }
   }
@@ -95,26 +97,26 @@ export default function GetAdded({ token }) {
       return setError("Sorry there is an error with your email.")
     } 
     
-    console.log(
-      {
-        user_id,
-        shop_name,
-        category,
-        email,
-        phone,
-        address,
-        about,
-        website_url,
-        ig_url,
-        fb_url,
-        x_url,
-        li_url,
-        consent,
-      }
-    )
+    // console.log(
+    //   {
+    //     user_id,
+    //     shop_name,
+    //     category,
+    //     email,
+    //     phone,
+    //     address,
+    //     about,
+    //     website_url,
+    //     ig_url,
+    //     fb_url,
+    //     x_url,
+    //     li_url,
+    //     consent,
+    //   }
+    // )
 
     try {
-      await api.post('/business', {
+      const response = await api.post('/business', {
         user_id,
         shop_name,
         category,
@@ -127,28 +129,20 @@ export default function GetAdded({ token }) {
         fb_url,
         x_url,
         li_url,
-        consent,
+        consent
       });
-      setSubmitted(true);
-      
-      setValues({
-        shop_name: "",
-        category: "",
-        email: "",
-        phone: "",
-        about: "",
-        website_url: "",
-        ig_url: "",
-        fb_url: "",
-        x_url: "",
-        li_url: "",
-        consent: false,
-        address: ''
-      });
+
+      if (response.status === 201) {
+        // console.log('Business created successfully:', response.data);
+        navigate('/profile');
+
+        // Fetch updated businesses after adding a new one
+        const updatedBusinessesResponse = await api.get('/business'); // Adjust the endpoint as needed
+        setBusinesses(updatedBusinessesResponse.data); // Assuming setBusinesses updates the state in the parent component
+      }
     } catch (error) {
-      setError(
-        "Sorry there was an error, we can't complete your request at the moment."
-      );
+      // console.error('Error submitting business:', error);
+      setError(error.response?.data?.error || 'An error occurred while submitting your business');
     }
   };
 
@@ -348,9 +342,9 @@ export default function GetAdded({ token }) {
               }
             />
             <p className="added__form-t">
-              By submitting this form, I authorize The Local Shop to display my
+              By submitting this form, I authorize NeighborGood to display my
               shop's information and location publicly. I understand that this
-              information will be accessible to users of The Local Shop platform
+              information will be accessible to users of NeighborGood platform
               and may be used to promote my business within the community. I
               consent to the use of my provided data for these purposes and
               acknowledge that I have the right to request the removal or update
@@ -372,7 +366,6 @@ export default function GetAdded({ token }) {
               </Typography>
             </Box>
           </Modal>
-          // )
           )}
           {error && <h3 className="added__form-error">{error}</h3>}
         </form>

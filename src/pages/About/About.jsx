@@ -4,19 +4,19 @@ export default function About() {
   return (
     <div className="about">
     <header>
-      <h1>About The Local Shop</h1>
+      <h1>About NeighborGood</h1>
     </header>
     <main>
       <section>
         <h2>Our Story</h2>
         <p>
-          Welcome to The Local Shop, where community and connection drive everything we do. Founded with a passion for empowering local businesses and fostering sustainable growth, The Local Shop is your go-to destination for discovering and supporting the heart and soul of neighborhoods worldwide.
+          Welcome to NeighborGood, where community and connection drive everything we do. Founded with a passion for empowering local businesses and fostering sustainable growth, NeighborGood is your go-to destination for discovering and supporting the heart and soul of neighborhoods worldwide.
         </p>
       </section>
       <section>
         <h2>Our Mission</h2>
         <p>
-          At The Local Shop, our mission is simple yet powerful: to connect users with local businesses, providing visibility and support to shop owners affected by economic upheaval. From highlighting the hidden gems in your own backyard to fostering authentic experiences for travelers seeking local treasures, we're dedicated to promoting community engagement and sustainable growth, one shop at a time.
+          At NeighborGood, our mission is simple yet powerful: to connect users with local businesses, providing visibility and support to shop owners affected by economic upheaval. From highlighting the hidden gems in your own backyard to fostering authentic experiences for travelers seeking local treasures, we're dedicated to promoting community engagement and sustainable growth, one shop at a time.
         </p>
       </section>
       <section>
@@ -34,7 +34,7 @@ export default function About() {
       <section>
         <h2>Join Us</h2>
         <p>
-          Join us on our mission to champion local businesses, uplift communities, and make a positive impact on the world. Whether you're a local business owner looking to connect with customers, a resident eager to support your community, or a traveler seeking authentic experiences, The Local Shop welcomes you with open arms.
+          Join us on our mission to champion local businesses, uplift communities, and make a positive impact on the world. Whether you're a local business owner looking to connect with customers, a resident eager to support your community, or a traveler seeking authentic experiences, NeighborGood welcomes you with open arms.
         </p>
       </section>
     </main>

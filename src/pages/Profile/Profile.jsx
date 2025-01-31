@@ -14,10 +14,10 @@ export default function Profile({ token }) {
 
   useEffect(() => {
     if (token) {
-      console.log('Token exists, calling getData():', token)
+      // console.log('Token exists, calling getData():', token)
       getData();
     } else {
-      console.log('No token found in Profile component')
+      // console.log('No token found in Profile component')
       setUser(null);
       setBusiness(null);
     }
@@ -25,21 +25,21 @@ export default function Profile({ token }) {
 
   const getData = async () => {
     try {
-      console.log('Making profile request...')
+      // console.log('Making profile request...')
       const resp1 = await api.get('/profile')
       const profile = resp1.data;
-      console.log('Profile response:', profile)
+      // console.log('Profile response:', profile)
       setUser(profile);
 
       try {
-        console.log('Making business request for user:', profile.id)
+        // console.log('Making business request for user:', profile.id)
         const resp2 = await api.get(`/business/${profile.id}`)
         const business = resp2.data;
-        console.log('Business response:', business)
+        // console.log('Business response:', business)
         setBusiness(business);
       } catch (error) {
         if (error.response?.status === 404) {
-          console.log('No business found for user:', profile.id)
+          // console.log('No business found for user:', profile.id)
           setBusiness(null)
         } else {
           console.error('Error loading business:', error.response?.data || error.message)
@@ -67,7 +67,8 @@ export default function Profile({ token }) {
               </div> */}
               <div className="profile__name">
                 <h2 className="profile__name-t">
-                  {user.name ? user.name.toUpperCase() : user.email.toUpperCase()}
+                  {user &&user.name ? user.name.toUpperCase() : user.email.toUpperCase()}
+                  {/* {console.log(user.name, user)} */}
                 </h2>
               </div>
             </div>

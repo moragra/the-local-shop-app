@@ -1,8 +1,8 @@
-# The Local Shop
+# NeighborGood
 
 ## Overview
 
-The Local Shop is an app designed to connect users with local businesses, providing visibility and support to local shop owners. It promotes community engagement and sustainable growth by highlighting local shops over large corporations and foreign-owned businesses.
+NeighborGood is an app designed to connect users with local businesses, providing visibility and support to local shop owners. It promotes community engagement and sustainable growth by highlighting local shops over large corporations and foreign-owned businesses.
 
 ## Features
 

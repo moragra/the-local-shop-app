@@ -2,44 +2,45 @@ import "./SignUp.scss";
 import { Link } from "react-router-dom";
 import { api } from '../../utils/axios'
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const [signed, setSigned] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
   const [red, setRed] = useState('')
 
-  const submitHandler = async (e) => {
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(""); // Clear any previous errors
 
-    setError(null);
-    setSigned(false);
+    const form = e.target;
+    const formData = {
+      name: form.name.value,
+      email: form.email.value,
+      password: form.password.value,
+    };
 
-    const name = e.target.name.value
-    const email = e.target.email.value
-    const password = e.target.pwd.value
-    const confirmPassword = e.target.pwdC.value
-
-    if(!name || !email || !password || !confirmPassword){
+    if(!formData.name || !formData.email || !formData.password){
       setRed('login__section-bottom-red')
        return
     }
 
-    if(password !== confirmPassword){
+    if(formData.password !== form.confirmPassword.value){
       setRed('login__section-bottom-red')
        return
     }
 
     try {
-      const response = await api.post('/signup', {
-        name,
-        email,
-        password
-      })
-      setSigned(true)
+      const response = await api.post("/signup", formData);
+      if (response.status === 201) {
+        navigate("/");
+      }
     } catch (error) {
-      setError("Sorry there was an error, we can't complete your request at the moment.")
+      console.error("Signup error:", error);
+      setError(error.response?.data?.error || "Error creating account");
     }
-  }
+  };
 
   return (
     <>
@@ -54,9 +55,9 @@ export default function SignUp() {
         <section className="signup__section">
           <h2 className="signup__section-h2">Sign up</h2>
           <h3 className="signup__section-h3">
-            Welcome to The Local Shop. Create your account.
+            Welcome to NeighborGood. Create your account.
           </h3>
-          <form className="signup__section-form" onSubmit={submitHandler}>
+          <form className="signup__section-form" onSubmit={handleSubmit}>
             <div className={`${red} signup__section-top`}>
               <input
                 className={`${red} signup__section-top-i`}
@@ -64,6 +65,7 @@ export default function SignUp() {
                 type="text"
                 placeholder="*Name"
                 name="name"
+                required
               />
               <input
                 className={`${red} signup__section-top-i`}
@@ -71,20 +73,23 @@ export default function SignUp() {
                 type="email"
                 placeholder="*Email"
                 name="email"
+                required
               />
               <input
                 className={`${red} signup__section-top-i`}
                 onClick={()=>{if(red=== 'login__section-bottom-red'){setRed('')}}}
                 type="password"
                 placeholder="*Password"
-                name="pwd"
+                name="password"
+                required
               />
               <input
                 className={`${red} signup__section-top-i`}
                 onClick={()=>{if(red=== 'login__section-bottom-red'){setRed('')}}}
                 type="password"
                 placeholder="*Confirm Paswword"
-                name="pwdC"
+                name="confirmPassword"
+                required
               />
             </div>
             <div className="signup__section-bottom">

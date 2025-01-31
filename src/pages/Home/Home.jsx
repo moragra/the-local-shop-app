@@ -3,12 +3,14 @@ import bag from "../../assets/bag.svg";
 import search from "../../assets/search.svg";
 import { Link } from "react-router-dom";
 import Map from "../../components/Map/Map";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from '../../utils/axios'
 
 export default function Home() {
   const [filter, setFilter] = useState(null)
   const [searchData, setSearchData] = useState(null)
+  const [businesses, setBusinesses] = useState([]);
+
   const searchHadler = async (e) => {
     e.preventDefault();
     const shop_name = e.target.search.value;
@@ -16,6 +18,20 @@ export default function Home() {
     setSearchData(data)
 
   };
+
+  useEffect(() => {
+    const fetchBusinesses = async () => {
+      try {
+        const response = await api.get('/business'); // Fetch all businesses
+        setBusinesses(response.data);
+      } catch (error) {
+        console.error("Error fetching businesses:", error);
+      }
+    };
+
+    fetchBusinesses();
+  }, []);
+
   return (
     <>
       <main className="main">
@@ -49,7 +65,7 @@ export default function Home() {
           </div>
        
         <div className="main__map">
-          <Map filter={filter} setFilter={setFilter} searchData ={searchData} setSearchData={setSearchData}/>
+          <Map businesses={businesses} filter={filter} setFilter={setFilter} searchData ={searchData} setSearchData={setSearchData}/>
         </div>
       </main>
     </>

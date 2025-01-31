@@ -4,7 +4,10 @@
 
 @include phone {
     .main {
-      padding: 1rem 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
       &__header {
         margin: 0;
         font-size: 2.3rem;
@@ -75,6 +78,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
+        padding: 1rem;
         &-b {
           border: 1px solid rgb(46, 46, 46);
           background-color: rgba(229, 229, 229, 0.435);
@@ -106,9 +110,9 @@
         }
       }
       &__map {
-          margin: 1.5rem 0;
-          border: none;
-          height: 22.37rem;
+        flex: 1;
+        position: relative;
+        // min-height: 400px;
       }
     }
   }

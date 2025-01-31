@@ -29,8 +29,8 @@ export default function Footer({token, setToken}) {
       </div>
       <div className="footer__right">
         <Link className="footer__right-link" to={"/"}>
-          <h2 className="footer__name">The</h2>
-          <h2 className="footer__name">Local Shop</h2>
+          <h2 className="footer__name">Neighbor</h2>
+          <h2 className="footer__name">Good</h2>
         </Link>
       </div>
     </footer>
