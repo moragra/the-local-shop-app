@@ -17,22 +17,29 @@ export default function GetAdded({ token }) {
 
   useEffect(() => {
     if (token) {
+      console.log('Token exists:', token)
       getProfile();
     } else {
+      console.log('No token found')
       setUser_id(null);
     }
   }, [token]);
 
   const getProfile = async () => {
-    const { data } = await api.get('/profile', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      mode: "cors",
-    });
-    setUser_id(data.id);
-  };
+    try {
+      console.log('Making profile request with token:', token)
+      const { data } = await api.get('/profile', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      console.log('Profile data received:', data)
+      setUser_id(data.id)
+    } catch (error) {
+      console.error('Error fetching profile:', error)
+      setError('Error fetching user profile')
+    }
+  }
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
