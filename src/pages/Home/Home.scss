@@ -65,7 +65,7 @@
             font-size: 1.5rem;
             font-weight: 600;
             color: $color-one;
-            letter-spacing: 0.3rem;
+            letter-spacing: 0.1rem;
             &:hover{
               color: $color-two;
             }
@@ -87,26 +87,23 @@
           margin: 0.4rem 0;
           border: none;
           border-radius: 1.25rem;
-          padding: 0 1rem;
+          // padding: 0 1rem;
+          padding: 0 2rem;
           &:hover{
             background-color: #026eea;;
           }
         }
         &-icon {
-          margin: 0.2rem 0rem;
-          width: 1.5rem;
-          height: 1.5rem;
-          padding-top: 0.2rem;
+          display: none;
         }
         &-name {
           margin: 0;
           color: $color-one;
           font-weight: 600;
           padding: 0.7rem 0rem;
-          padding-left: 0;
-          font-size: 0.62rem;
+          font-size: 0.65rem;
           font-weight: 700;
-          
+          // letter-spacing: -0.5px;
         }
       }
       &__map {

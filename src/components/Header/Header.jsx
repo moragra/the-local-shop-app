@@ -16,8 +16,12 @@ export default function Header({ token, setToken }) {
       <div className="header__container">
         <div className="header__left">
           <Link className="header__left-link" to={"/"}>
-            <h2 className="header__name-1">Neighbor</h2>
-            <h2 className="header__name-1">Good</h2>
+            {/* <h2 className="header__name-1">🤝 Neighbor</h2>
+            <h2 className="header__name-2">Good</h2> */}
+            {/* <h2 className="header__name-0">🤝</h2> */}
+            {/* <div className="header__name-1-container"> */}
+              {/* <h2 className="header__name-1">NEIGHBORGOOD</h2>     */}
+            {/* </div> */}
           </Link>
         </div>
         <div className="header__right">

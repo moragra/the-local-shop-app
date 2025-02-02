@@ -35,31 +35,39 @@ export default function Home() {
   return (
     <>
       <main className="main">
-        <h2 className="main__header">EXPLORE ALL SHOPS</h2>
+        <h2 className="main__header">Discover Your NeighborGood</h2>
         <form className="main__form" action="" onSubmit={searchHadler}>
           <div className="main__form-input">
             <img className="main__form-input-icon" src={search} alt="" />
             <input
               className="main__form-input-field"
               type="text"
-              placeholder="Search"
+              placeholder="Find local gems near you..."
               name="search"
             />
           </div>
 
           <button className="main__form-search-btn">
-            <h3 className="main__form-search-t">SEARCH</h3>
+            <h3 className="main__form-search-t">FIND LOCAL</h3>
           </button>
           </form>
-          <div className="main__categories">
-          {["groceries", "fashion", "restaurants", "recreational", "convenience", "hotel"].map((category) => (
+
+         <div className="main__categories">
+          {[
+            {id: "groceries", name: "🥕 Food"},
+            {id: "fashion", name: "👗 Style"}, 
+            {id: "restaurants", name: "🍔 Eats"},
+            {id: "recreational", name: "🎉 Fun"},
+            {id: "convenience", name: "🛒 Needs"},
+            {id: "hotel", name: "🏡 Stay"}
+          ].map((category) => (
             <button
-              key={category}
+              key={category.id}
               className="main__categories-b"
-              onClick={() => setFilter(category)}
+              onClick={() => setFilter(category.id)}
             >
-              <img className="main__categories-icon" src={bag} alt="" />
-              <h4 className="main__categories-name">{category.toUpperCase()}</h4>
+              <img className="main__categories-icon" src={bag} alt="Category" />
+              <h4 className="main__categories-name">{category.name}</h4>
             </button>
           ))}
           </div>
